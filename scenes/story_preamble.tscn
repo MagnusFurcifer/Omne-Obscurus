@@ -1,0 +1,132 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/fonts/OldLondon.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/story_preamble.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/mouse_left.png" type="Texture" id=3]
+[ext_resource path="res://assets/VO/preamble.wav" type="AudioStream" id=4]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_energy = 0.0
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 72
+font_data = ExtResource( 1 )
+
+[sub_resource type="PlaneMesh" id=3]
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="SpatialMaterial" id=5]
+resource_local_to_scene = true
+flags_transparent = true
+albedo_texture = SubResource( 4 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "roll"
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -1.70783, 0.834048 ), Vector3( 0, -1.70783, -2.29261 ) ]
+}
+
+[sub_resource type="PlaneMesh" id=7]
+
+[sub_resource type="ViewportTexture" id=8]
+viewport_path = NodePath("Viewport2")
+
+[sub_resource type="SpatialMaterial" id=9]
+resource_local_to_scene = true
+flags_transparent = true
+albedo_texture = SubResource( 8 )
+
+[node name="Node2D" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1280, 2000 )
+transparent_bg = true
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+
+[node name="Control" type="Control" parent="Viewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Viewport/Control"]
+margin_left = 139.343
+margin_top = 97.39
+margin_right = 907.343
+margin_bottom = 3290.39
+rect_scale = Vector2( 1.37891, 1.36611 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "For weeks I've been on the hunt and finally a clue worth a damn. 
+
+When I was assigned this case, that of the disappearance of a series of scholars; 5 in total, I had assumed a jealous colleague or perhaps wayward student, but the facts do not bare out this hypothesis. 
+Instead a twisting web of clues joined the missing scholars ultimately leading to a remote lake in the mountains scribbled in the margins of an old tome. 
+
+As I write I sit on the shore of said lake as dusk falls. 
+
+I sincerely hope to cross before night fully arrives."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.70783, 0.834048 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.333132, 0.94288, 0, -0.94288, 0.333132, 0.00226879, -0.732063, -0.20639 )
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.02
+anims/roll = SubResource( 6 )
+
+[node name="Viewport2" type="Viewport" parent="."]
+size = Vector2( 1280, 720 )
+transparent_bg = true
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+
+[node name="Control" type="Control" parent="Viewport2"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Viewport2/Control"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 50.0
+margin_bottom = 24.0
+text = "Skip"
+
+[node name="Sprite" type="Sprite" parent="Viewport2/Control"]
+position = Vector2( 50, 20 )
+texture = ExtResource( 3 )
+
+[node name="haha" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.937166, -0.348883, 0, 0.348883, 0.937166, 0.253321, -1.72121, 0.698648 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="vo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

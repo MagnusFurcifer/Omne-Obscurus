@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/448060__cybermad__mystery.wav-578873e36796bf744226ea4bcb9a326a.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/music/448060__cybermad__mystery.wav"
+dest_files=[ "res://.import/448060__cybermad__mystery.wav-578873e36796bf744226ea4bcb9a326a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

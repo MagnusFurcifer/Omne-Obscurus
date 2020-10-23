@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Metal_Iron_normal.jpg-ea9f3276a66c6ea6e33766185405d011.s3tc.stex"
+path.etc="res://.import/Metal_Iron_normal.jpg-ea9f3276a66c6ea6e33766185405d011.etc.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/models/lantern/hanging_lantern/Metal_Iron_normal.jpg"
+dest_files=[ "res://.import/Metal_Iron_normal.jpg-ea9f3276a66c6ea6e33766185405d011.s3tc.stex", "res://.import/Metal_Iron_normal.jpg-ea9f3276a66c6ea6e33766185405d011.etc.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=1
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

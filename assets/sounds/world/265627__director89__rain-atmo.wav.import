@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/265627__director89__rain-atmo.wav-45ca226b7b6ae9c983808fba756eb564.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/265627__director89__rain-atmo.wav"
+dest_files=[ "res://.import/265627__director89__rain-atmo.wav-45ca226b7b6ae9c983808fba756eb564.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

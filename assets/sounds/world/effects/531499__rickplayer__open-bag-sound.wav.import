@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/531499__rickplayer__open-bag-sound.wav-1bd805e6bca7ec78dc8f9bd6d0990750.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/effects/531499__rickplayer__open-bag-sound.wav"
+dest_files=[ "res://.import/531499__rickplayer__open-bag-sound.wav-1bd805e6bca7ec78dc8f9bd6d0990750.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

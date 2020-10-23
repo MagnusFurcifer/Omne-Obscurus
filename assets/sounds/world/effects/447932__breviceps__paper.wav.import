@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/447932__breviceps__paper.wav-60a17c1110db00782c203699c97aa859.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/effects/447932__breviceps__paper.wav"
+dest_files=[ "res://.import/447932__breviceps__paper.wav-60a17c1110db00782c203699c97aa859.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

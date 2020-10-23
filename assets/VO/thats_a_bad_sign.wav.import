@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/thats_a_bad_sign.wav-6e8d00f3b7a50ff8f4c56a5e63ebee4b.sample"
+
+[deps]
+
+source_file="res://assets/VO/thats_a_bad_sign.wav"
+dest_files=[ "res://.import/thats_a_bad_sign.wav-6e8d00f3b7a50ff8f4c56a5e63ebee4b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

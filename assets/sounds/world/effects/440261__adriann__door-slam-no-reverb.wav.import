@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/440261__adriann__door-slam-no-reverb.wav-23ba631c2cf9afe83113b51d5010a105.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/effects/440261__adriann__door-slam-no-reverb.wav"
+dest_files=[ "res://.import/440261__adriann__door-slam-no-reverb.wav-23ba631c2cf9afe83113b51d5010a105.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,254 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scripts/puzzles/puzzle_line.gd" type="Script" id=1]
+[ext_resource path="res://assets/puzzles/controls/exit.png" type="Texture" id=2]
+[ext_resource path="res://assets/puzzles/controls/back_icon.png" type="Texture" id=3]
+[ext_resource path="res://scripts/puzzles/puzzle_01.gd" type="Script" id=4]
+[ext_resource path="res://assets/puzzles/Marble015_2K_Color.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/puzzles/controls/runes/os.png" type="Texture" id=6]
+[ext_resource path="res://assets/puzzles/controls/runes/yri.png" type="Texture" id=7]
+[ext_resource path="res://scripts/puzzles/rune.gd" type="Script" id=8]
+[ext_resource path="res://assets/puzzles/effects/star_08.png" type="Texture" id=9]
+[ext_resource path="res://entities/fonts/latin_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/puzzles/controls/exit_hover.png" type="Texture" id=11]
+[ext_resource path="res://assets/puzzles/controls/back_hover_icon.png" type="Texture" id=12]
+[ext_resource path="res://assets/puzzles/draw_area.jpg" type="Texture" id=13]
+
+[sub_resource type="SegmentShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 54, 64 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 54, 64 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_point_count = 1
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 1.0
+color = Color( 0.552941, 0.164706, 0.572549, 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "closed"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dimensional Lock Engaged" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_fonts/normal_font:outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.72549, 0.286275, 0.305882, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/normal_font:outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.258824, 0.407843, 0.266667, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dimensional Lock Disengaged" ]
+}
+
+[node name="puzzle" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 1.27887
+margin_right = 2049.28
+margin_bottom = 2048.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="draw_area" type="TextureRect" parent="."]
+margin_left = 142.0
+margin_top = 100.0
+margin_right = 364.0
+margin_bottom = 440.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit_button" type="TextureButton" parent="."]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 136.0
+margin_bottom = 132.0
+rect_scale = Vector2( 0.25, 0.25 )
+mouse_filter = 1
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back_button" type="TextureButton" parent="."]
+margin_left = 60.0
+margin_top = 4.0
+margin_right = 188.0
+margin_bottom = 132.0
+rect_scale = Vector2( 0.25, 0.25 )
+mouse_filter = 1
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="puzzle_line" type="StaticBody2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="puzzle_line"]
+default_color = Color( 0.184314, 0.192157, 0.219608, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="puzzle_line"]
+shape = SubResource( 1 )
+
+[node name="rune_01" type="Area2D" parent="." groups=[
+"rune",
+]]
+position = Vector2( 13.0581, 94.1887 )
+script = ExtResource( 8 )
+
+[node name="rune_sprite" type="TextureRect" parent="rune_01"]
+margin_right = 128.0
+margin_bottom = 128.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rune_01"]
+position = Vector2( 71.8661, 71.1039 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="rune_01"]
+position = Vector2( 64, 64 )
+enabled = true
+cast_to = Vector2( 0, 512 )
+collide_with_areas = true
+
+[node name="rune_03" type="Area2D" parent="." groups=[
+"rune",
+]]
+position = Vector2( 10.8131, 302.967 )
+script = ExtResource( 8 )
+
+[node name="rune_sprite" type="TextureRect" parent="rune_03"]
+margin_right = 128.0
+margin_bottom = 128.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rune_03"]
+position = Vector2( 71.8661, 71.1039 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="rune_03"]
+position = Vector2( 64, 64 )
+enabled = true
+cast_to = Vector2( 0, 512 )
+collide_with_areas = true
+
+[node name="rune_02" type="Area2D" parent="." groups=[
+"rune",
+]]
+position = Vector2( 359.47, 195.348 )
+script = ExtResource( 8 )
+rune_type = "yri"
+
+[node name="rune_sprite" type="TextureRect" parent="rune_02"]
+margin_right = 128.0
+margin_bottom = 128.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rune_02"]
+position = Vector2( 65.6913, 67.5165 )
+shape = SubResource( 3 )
+
+[node name="RayCast2D" type="RayCast2D" parent="rune_02"]
+position = Vector2( 65.4983, 64 )
+enabled = true
+cast_to = Vector2( 0, 512 )
+collide_with_areas = true
+
+[node name="puzzle_complete_particles" type="Particles2D" parent="."]
+position = Vector2( 259.207, 234.485 )
+scale = Vector2( 0.05, 0.05 )
+emitting = false
+amount = 500
+lifetime = 100.0
+one_shot = true
+speed_scale = 64.0
+explosiveness = 1.0
+randomness = 0.5
+process_material = SubResource( 4 )
+texture = ExtResource( 9 )
+
+[node name="lock_label" type="RichTextLabel" parent="."]
+margin_left = 132.33
+margin_top = 6.33032
+margin_right = 484.33
+margin_bottom = 46.3303
+custom_fonts/normal_font = ExtResource( 10 )
+meta_underlined = false
+text = "Dimensional Lock Engaged"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="lock_label"]
+anims/closed = SubResource( 5 )
+anims/open = SubResource( 6 )
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

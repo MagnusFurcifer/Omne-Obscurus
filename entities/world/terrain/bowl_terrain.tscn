@@ -1,0 +1,1647 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/cliff/Rock039_2K_Color.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/cliff/Rock039_2K_Normal.png" type="Texture" id=3]
+[ext_resource path="res://entities/donk.tscn" type="PackedScene" id=4]
+[ext_resource path="res://bowl_data/data.hterrain" type="Resource" id=5]
+[ext_resource path="res://scripts/bowl_terrain.gd" type="Script" id=6]
+[ext_resource path="res://assets/textures/rock/Rock035_2K_Color.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/rock/Rock035_2K_Roughness.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/rock/Rock035_2K_Normal.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/moon/nasa_al.jpg" type="Texture" id=10]
+[ext_resource path="res://assets/textures/moon/oh my lordf.png" type="Texture" id=11]
+[ext_resource path="res://assets/models/donk_mats/fur.png" type="Texture" id=12]
+[ext_resource path="res://scripts/entities/black_hole_mesh.gd" type="Script" id=13]
+[ext_resource path="res://assets/textures/path/Ground032_2K_Normal.png" type="Texture" id=14]
+[ext_resource path="res://assets/textures/path/Ground032_2K_Color.png" type="Texture" id=15]
+[ext_resource path="res://assets/textures/grass/Ground037_2K_Normal.png" type="Texture" id=16]
+[ext_resource path="res://assets/textures/grass/Ground037_2K_Color.png" type="Texture" id=17]
+[ext_resource path="res://assets/sounds/world/music/244417__lennyboy__scaryviolins.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/sounds/world/music/26722__leady__women-singing.wav" type="AudioStream" id=19]
+[ext_resource path="res://entities/world/objects/arches/arch.tscn" type="PackedScene" id=20]
+[ext_resource path="res://entities/world/objects/fence/FullFence4.tscn" type="PackedScene" id=21]
+[ext_resource path="res://entities/world/terrain/fence.tscn" type="PackedScene" id=22]
+
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 7 )
+roughness_texture = ExtResource( 8 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 9 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "open_shutters"
+step = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("roof_1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 44.4987, 130.342, 127.22 ), Vector3( -64.2512, 130.342, 127.22 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("roof_2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 204.538, 130.342, 127.22 ), Vector3( 320.03, 130.342, 127.22 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "look_at_roof"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 180, 0 ), Vector3( 60, 180, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "look_at_stuff"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 180, 0 ), Vector3( 0, 180, 0 ), Vector3( -30, 180, 0 ), Vector3( -30, 180, 0 ), Vector3( 0, 180, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 131.102, 36.8582, 69.8766 ), Vector3( 131.102, 36.8582, 77.4428 ) ]
+}
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 19.3223, 2.76996, 6.47646 )
+
+[sub_resource type="SphereMesh" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_texture = ExtResource( 10 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "black_hole"
+tracks/0/type = "value"
+tracks/0/path = NodePath("black_hole_mesh/tentacles:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.47451 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("black_hole_mesh/tentacles:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.25, 0.25, 0.25 ), Vector3( 0.5, 0.5, 0.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("black_hole_mesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("black_hole_mesh:mesh:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.1, 1.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("black_hole_mesh:mesh:height")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.2, 2.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "value"
+tracks/0/path = NodePath("moon_mesh:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 128.245, 71.7643, 364.741 ), Vector3( 128.245, 451.256, 364.741 ) ]
+}
+
+[sub_resource type="SphereMesh" id=12]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Shader" id=13]
+code = "shader_type spatial;
+
+const float uvScale = 1.0;
+const float colorUvScale = 0.1;
+const float furDepth = 0.2;
+const int furLayers = 64;
+const float rayStep = furDepth*2.0 / float(furLayers);
+const float furThreshold = 0.4;
+const float shininess = 50.0;
+
+uniform sampler2D iChannel0 : hint_albedo;
+uniform sampler2D iChannel1 : hint_albedo;
+
+uniform float iTime;
+
+bool intersectSphere(vec3 ro, vec3 rd, float r, out float t)
+{
+	float b = dot(-ro, rd);
+	float det = b*b - dot(ro, ro) + r*r;
+	if (det < 0.0) return false;
+	det = sqrt(det);
+	t = b - det;
+	return t > 0.0;
+}
+
+vec3 rotateX(vec3 p, float a)
+{
+    float sa = sin(a);
+    float ca = cos(a);
+    return vec3(p.x, ca*p.y - sa*p.z, sa*p.y + ca*p.z);
+}
+
+vec3 rotateY(vec3 p, float a)
+{
+    float sa = sin(a);
+    float ca = cos(a);
+    return vec3(ca*p.x + sa*p.z, p.y, -sa*p.x + ca*p.z);
+}
+
+vec2 cartesianToSpherical(vec3 p)
+{
+	
+	float r = length(p);
+
+	float t = (r - (1.0 - furDepth)) / furDepth;	
+	p = rotateX(p.zyx, -cos(iTime*1.5)*t*t*0.4).zyx;
+
+	p /= r;	
+	vec2 uv = vec2(atan(p.y, p.x), acos(p.z));
+
+	uv.y -= t*t*0.1;	// curl down
+	return uv;
+}
+
+// returns fur density at given position
+float furDensity(vec3 pos, out vec2 uv)
+{
+	uv = cartesianToSpherical(pos.xzy);	
+	vec4 tex = textureLod(iChannel0, uv*uvScale, 0.0);
+
+	// thin out hair
+	float density = smoothstep(furThreshold, 1.0, tex.x);
+	
+	float r = length(pos);
+	float t = (r - (1.0 - furDepth)) / furDepth;
+	
+	// fade out along length
+	float len = tex.y;
+	density *= smoothstep(len, len-0.2, t);
+
+	return density;	
+}
+
+// calculate normal from density
+vec3 furNormal(vec3 pos, float density)
+{
+    float eps = 0.01;
+    vec3 n;
+	vec2 uv;
+    n.x = furDensity( vec3(pos.x+eps, pos.y, pos.z), uv ) - density;
+    n.y = furDensity( vec3(pos.x, pos.y+eps, pos.z), uv ) - density;
+    n.z = furDensity( vec3(pos.x, pos.y, pos.z+eps), uv ) - density;
+    return normalize(n);
+}
+
+vec3 furShade(vec3 pos, vec2 uv, vec3 ro, float density)
+{
+	// lighting
+	const vec3 L = vec3(0, 1, 0);
+	vec3 V = normalize(ro - pos);
+	vec3 H = normalize(V + L);
+
+	vec3 N = -furNormal(pos, density);
+	//float diff = max(0.0, dot(N, L));
+	float diff = max(0.0, dot(N, L)*0.5+0.5);
+	float spec = pow(max(0.0, dot(N, H)), shininess);
+	
+	// base color
+	vec3 color = textureLod(iChannel1, uv*colorUvScale, 0.0).xyz;
+
+	// darken with depth
+	float r = length(pos);
+	float t = (r - (1.0 - furDepth)) / furDepth;
+	t = clamp(t, 0.0, 1.0);
+	float i = t*0.5+0.5;
+		
+	return color*diff*i + vec3(spec*i);
+}		
+
+vec4 scene(vec3 ro,vec3 rd)
+{
+	vec3 p = vec3(0.0);
+	const float r = 1.0;
+	float t;				  
+	bool hit = intersectSphere(ro - p, rd, r, t);
+	
+	vec4 c = vec4(0.0);
+	if (hit) {
+		vec3 pos = ro + rd*t;
+
+		// ray-march into volume
+		for(int i=0; i<furLayers; i++) {
+			vec4 sampleCol;
+			vec2 uv;
+			sampleCol.a = furDensity(pos, uv);
+			if (sampleCol.a > 0.0) {
+				sampleCol.rgb = furShade(pos, uv, ro, sampleCol.a);
+
+				// pre-multiply alpha
+				sampleCol.rgb *= sampleCol.a;
+				c = c + sampleCol*(1.0 - c.a);
+				if (c.a > 0.95) break;
+			}
+			
+			pos += rd*rayStep;
+		}
+	}
+	
+	return c;
+}
+
+void fragment() {
+	vec2 uv = FRAGCOORD.xy / VIEWPORT_SIZE.xy;
+	uv = uv*2.0-1.0;
+	uv.x *= VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
+	vec3 ro = vec3(0.0, 0.0, 2.5);
+	vec3 rd = normalize(vec3(uv, -2.0));
+	vec4 sc = scene(ro, rd);
+	
+	vec3 al = sc.rgb;
+	ALPHA = sc.a;
+	ALBEDO = al;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+shader_param/iTime = null
+shader_param/iChannel0 = ExtResource( 12 )
+shader_param/iChannel1 = ExtResource( 12 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "make_singing_louder"
+tracks/0/type = "value"
+tracks/0/path = NodePath("singing:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -1.0, 7.0 ]
+}
+
+[node name="bowl_terrain" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.098, -29.585, -76.88 )
+script = ExtResource( 6 )
+
+[node name="HTerrain" type="Spatial" parent="."]
+script = ExtResource( 1 )
+collision_enabled = true
+ambient_wind = 0.0
+lod_scale = 2.0
+custom_globalmap_shader = null
+map_scale = Vector3( 0.5, 1, 0.5 )
+_terrain_data = ExtResource( 5 )
+chunk_size = 32
+shader_type = "Classic4Lite"
+custom_shader = null
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Plane( 0, 0, 0, 0 )
+ground/albedo_bump_0 = ExtResource( 2 )
+ground/normal_roughness_0 = ExtResource( 3 )
+ground/albedo_bump_1 = ExtResource( 7 )
+ground/normal_roughness_1 = ExtResource( 9 )
+ground/albedo_bump_2 = ExtResource( 15 )
+ground/normal_roughness_2 = ExtResource( 14 )
+ground/albedo_bump_3 = ExtResource( 17 )
+ground/normal_roughness_3 = ExtResource( 16 )
+
+[node name="geometry" type="Spatial" parent="."]
+
+[node name="walls" type="Spatial" parent="geometry"]
+
+[node name="StaticBody" type="StaticBody" parent="geometry/walls"]
+transform = Transform( 60, 0, 0, 0, 50, 0, 0, 0, 1, 62.7808, 79.8418, 1.18467 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/walls/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/walls/StaticBody"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="StaticBody7" type="StaticBody" parent="geometry/walls"]
+transform = Transform( 125, 0, 0, 0, 50, 0, 0, 0, 1, 127.844, 79.8418, 239.967 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/walls/StaticBody7"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/walls/StaticBody7"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="StaticBody2" type="StaticBody" parent="geometry/walls"]
+transform = Transform( 60, 0, 0, 0, 50, 0, 0, 0, 1, 194.009, 79.8418, 1.18467 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/walls/StaticBody2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/walls/StaticBody2"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="StaticBody3" type="StaticBody" parent="geometry/walls"]
+transform = Transform( -9.77524e-06, 0, 1, 0, 50, 0, -60, 0, -1.62921e-07, 253.208, 79.8418, 61.94 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/walls/StaticBody3"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/walls/StaticBody3"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="StaticBody4" type="StaticBody" parent="geometry/walls"]
+transform = Transform( -9.77524e-06, 0, 1, 0, 50, 0, -60, 0, -1.62921e-07, 253.208, 79.8418, 181.847 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/walls/StaticBody4"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/walls/StaticBody4"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="StaticBody5" type="StaticBody" parent="geometry/walls"]
+transform = Transform( -9.77524e-06, 0, 1, 0, 50, 0, -60, 0, -1.62921e-07, 3.78588, 79.8418, 61.8792 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/walls/StaticBody5"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/walls/StaticBody5"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="StaticBody6" type="StaticBody" parent="geometry/walls"]
+transform = Transform( -9.77524e-06, 0, 1, 0, 50, 0, -60, 0, -1.62921e-07, 3.78588, 79.8418, 181.652 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/walls/StaticBody6"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/walls/StaticBody6"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="roofs" type="Spatial" parent="geometry"]
+
+[node name="roof_1" type="StaticBody" parent="geometry/roofs"]
+transform = Transform( -2.03651e-05, 80, -4.37114e-08, 0, -3.49691e-06, -1, -125, -1.30337e-05, 7.12149e-15, 44.4987, 130.342, 127.22 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/roofs/roof_1"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/roofs/roof_1"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="roof_2" type="StaticBody" parent="geometry/roofs"]
+transform = Transform( -2.03651e-05, 80, -4.37114e-08, 0, -3.49691e-06, -1, -125, -1.30337e-05, 7.12149e-15, 204.538, 130.342, 127.22 )
+
+[node name="CollisionShape" type="CollisionShape" parent="geometry/roofs/roof_2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="geometry/roofs/roof_2"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="geometry/roofs"]
+playback_speed = 0.08
+anims/open_shutters = SubResource( 4 )
+
+[node name="Camera" type="Camera" parent="geometry/roofs"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 131.102, 36.8582, 69.8766 )
+far = 999.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="geometry/roofs/Camera"]
+playback_speed = 0.15
+anims/look_at_roof = SubResource( 5 )
+anims/look_at_stuff = SubResource( 6 )
+
+[node name="final_cutscene_trigger_delay" type="Timer" parent="geometry/roofs"]
+wait_time = 2.0
+one_shot = true
+
+[node name="donk_congree" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.260162, 16.2076, 33.3219 )
+
+[node name="donk" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.988327, 0, -0.152347, 0, 1, 0, 0.152347, 0, -0.988327, 101.266, -5.70246, 132.719 )
+
+[node name="donk2" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.999487, 0, 0.0320389, 0, 1, 0, -0.0320389, 0, -0.999487, 91.0936, -5.70246, 132.719 )
+
+[node name="donk3" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 84.2524, -5.70246, 126.305 )
+
+[node name="donk4" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 95.3451, -5.70246, 126.305 )
+
+[node name="donk5" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 105.719, -5.70246, 126.305 )
+
+[node name="donk6" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 101.673, -5.70246, 120.044 )
+
+[node name="donk7" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 91.9053, -5.70246, 120.044 )
+
+[node name="donk8" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 81.9053, -5.70246, 119.044 )
+
+[node name="donk9" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 110.911, -5.70246, 121.069 )
+
+[node name="donk10" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 117.068, -5.70246, 111.595 )
+
+[node name="donk11" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 107.283, -5.70246, 111.595 )
+
+[node name="donk12" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 98.2831, -5.70246, 111.595 )
+
+[node name="donk13" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 88.2831, -5.70246, 111.595 )
+
+[node name="donk14" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 84.2146, -5.70246, 105.676 )
+
+[node name="donk17" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 94.3255, -5.70246, 105.676 )
+
+[node name="donk18" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 102.279, -5.70246, 105.676 )
+
+[node name="donk19" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 111.15, -5.70246, 105.676 )
+
+[node name="donk20" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 121.174, -5.70246, 105.676 )
+
+[node name="donk21" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 129.574, -5.70246, 105.676 )
+
+[node name="donk22" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 138.753, -5.70246, 105.676 )
+
+[node name="donk23" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 148.354, -5.70246, 105.566 )
+
+[node name="donk24" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 157.991, -5.70246, 105.566 )
+
+[node name="donk25" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 167.75, -5.70246, 105.566 )
+
+[node name="donk26" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 177.373, -5.70246, 105.566 )
+
+[node name="donk15" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 88.5822, -5.70246, 98.2935 )
+
+[node name="donk30" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 98.6932, -5.70246, 98.2935 )
+
+[node name="donk31" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 106.647, -5.70246, 98.2935 )
+
+[node name="donk32" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 115.517, -5.70246, 98.2935 )
+
+[node name="donk33" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 125.542, -5.70246, 98.2935 )
+
+[node name="donk34" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 133.942, -5.70246, 98.2935 )
+
+[node name="donk35" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 143.12, -5.70246, 98.2935 )
+
+[node name="donk36" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 152.722, -5.70246, 98.1832 )
+
+[node name="donk37" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 162.358, -5.70246, 98.1832 )
+
+[node name="donk38" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 172.118, -5.70246, 98.1832 )
+
+[node name="donk39" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 181.741, -5.70246, 98.1832 )
+
+[node name="donk16" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 82.7744, -5.70246, 90.3063 )
+
+[node name="donk40" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 92.8854, -5.70246, 90.3063 )
+
+[node name="donk41" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 100.839, -5.70246, 90.3063 )
+
+[node name="donk42" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 109.709, -5.70246, 90.3063 )
+
+[node name="donk43" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 119.734, -5.70246, 90.3063 )
+
+[node name="donk44" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 128.134, -5.70246, 90.3063 )
+
+[node name="donk45" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 137.312, -5.70246, 90.3063 )
+
+[node name="donk46" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 146.914, -5.70246, 90.196 )
+
+[node name="donk47" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 156.551, -5.70246, 90.196 )
+
+[node name="donk48" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 166.31, -5.70246, 90.196 )
+
+[node name="donk49" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 175.933, -5.70246, 90.196 )
+
+[node name="donk50" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 88.2616, -5.70246, 83.4057 )
+
+[node name="donk51" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 98.3725, -5.70246, 83.4057 )
+
+[node name="donk52" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 106.326, -5.70246, 83.4057 )
+
+[node name="donk53" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 115.197, -5.70246, 83.4057 )
+
+[node name="donk54" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 125.221, -5.70246, 83.4057 )
+
+[node name="donk55" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 133.621, -5.70246, 83.4057 )
+
+[node name="donk56" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 142.8, -5.70246, 83.4057 )
+
+[node name="donk57" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 152.401, -5.70246, 83.2954 )
+
+[node name="donk58" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 162.038, -5.70246, 83.2954 )
+
+[node name="donk59" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 171.797, -5.70246, 83.2954 )
+
+[node name="donk61" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 92.9224, -5.70246, 77.8835 )
+
+[node name="donk62" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 103.033, -5.70246, 77.8835 )
+
+[node name="donk63" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 110.987, -5.70246, 77.8835 )
+
+[node name="donk64" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 119.857, -5.70246, 77.8835 )
+
+[node name="donk65" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 129.882, -5.70246, 77.8835 )
+
+[node name="donk66" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 138.282, -5.70246, 77.8835 )
+
+[node name="donk67" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 147.46, -5.70246, 77.8835 )
+
+[node name="donk68" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 157.062, -5.70246, 77.7732 )
+
+[node name="donk69" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 166.699, -5.70246, 77.7732 )
+
+[node name="donk70" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 97.5373, -5.70246, 71.7765 )
+
+[node name="donk71" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 107.648, -5.70246, 71.7765 )
+
+[node name="donk72" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 115.602, -5.70246, 71.7765 )
+
+[node name="donk73" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 124.472, -5.70246, 71.7765 )
+
+[node name="donk74" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 134.497, -5.70246, 71.7765 )
+
+[node name="donk75" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 142.897, -5.70246, 71.7765 )
+
+[node name="donk76" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 152.075, -5.70246, 71.7765 )
+
+[node name="donk77" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 161.677, -5.70246, 71.6662 )
+
+[node name="donk78" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 171.314, -5.70246, 71.6662 )
+
+[node name="donk80" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 101.084, -5.70246, 65.4657 )
+
+[node name="donk81" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 109.037, -5.70246, 65.4657 )
+
+[node name="donk82" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 117.908, -5.70246, 65.4657 )
+
+[node name="donk83" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 127.932, -5.70246, 65.4657 )
+
+[node name="donk84" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 136.332, -5.70246, 65.4657 )
+
+[node name="donk85" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 145.511, -5.70246, 65.4657 )
+
+[node name="donk86" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 155.113, -5.70246, 65.3554 )
+
+[node name="donk87" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 164.749, -5.70246, 65.3554 )
+
+[node name="donk88" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 95.3308, -5.70246, 59.8616 )
+
+[node name="donk89" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 105.442, -5.70246, 59.8616 )
+
+[node name="donk90" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 113.395, -5.70246, 59.8616 )
+
+[node name="donk91" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 122.266, -5.70246, 59.8616 )
+
+[node name="donk92" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 132.29, -5.70246, 59.8616 )
+
+[node name="donk93" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.993015, 0, 0.117988, 0, 1, 0, -0.117988, 0, -0.993015, 140.691, -5.70246, 59.8616 )
+
+[node name="donk94" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 149.869, -5.70246, 59.8616 )
+
+[node name="donk95" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 159.471, -5.70246, 59.7513 )
+
+[node name="donk27" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 177.763, -5.70246, 111.166 )
+
+[node name="donk28" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 164.768, -6.11307, 110.34 )
+
+[node name="donk29" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 153.766, -6.06174, 110.059 )
+
+[node name="donk60" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 103.755, 3.58364, 148.896 )
+
+[node name="donk79" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 90.7599, 3.17304, 148.07 )
+
+[node name="donk96" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 79.7574, 3.22436, 147.79 )
+
+[node name="donk97" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 87.3679, 3.58364, 156.405 )
+
+[node name="donk98" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 74.3732, 3.17304, 155.579 )
+
+[node name="donk99" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 63.3707, 3.22436, 155.298 )
+
+[node name="donk100" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 120.805, 3.58364, 156.405 )
+
+[node name="donk101" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 107.81, 3.17304, 155.579 )
+
+[node name="donk102" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 96.8079, 3.22436, 155.298 )
+
+[node name="donk103" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 126.09, 3.58364, 162.043 )
+
+[node name="donk104" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 113.095, 3.17304, 161.217 )
+
+[node name="donk105" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 102.093, 3.22436, 160.936 )
+
+[node name="donk106" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 138.124, 3.58364, 152.588 )
+
+[node name="donk107" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 125.13, 3.17304, 151.762 )
+
+[node name="donk108" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 114.127, 3.22436, 151.481 )
+
+[node name="donk109" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 138.124, 3.58364, 144.1 )
+
+[node name="donk110" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 125.13, 3.17304, 143.274 )
+
+[node name="donk111" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 114.127, 3.22436, 142.993 )
+
+[node name="donk112" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 171.227, 3.58364, 144.1 )
+
+[node name="donk113" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 158.233, 3.17304, 143.274 )
+
+[node name="donk114" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 147.23, 3.22436, 142.993 )
+
+[node name="donk115" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 154.345, 3.58364, 138.409 )
+
+[node name="donk116" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 141.35, 3.17304, 137.584 )
+
+[node name="donk117" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 130.348, 3.22436, 137.303 )
+
+[node name="donk118" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 185.95, 3.58364, 138.409 )
+
+[node name="donk119" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 172.955, 3.17304, 137.584 )
+
+[node name="donk120" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 161.952, 3.22436, 137.303 )
+
+[node name="donk121" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 193.654, 3.58364, 133.478 )
+
+[node name="donk122" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 180.659, 3.17304, 132.652 )
+
+[node name="donk123" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 169.656, 3.22436, 132.371 )
+
+[node name="donk124" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 159.264, 3.58364, 133.478 )
+
+[node name="donk125" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 146.269, 3.17304, 132.652 )
+
+[node name="donk126" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 135.267, 3.22436, 132.371 )
+
+[node name="donk127" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 152.926, 3.58364, 126.013 )
+
+[node name="donk128" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 139.932, 3.17304, 125.187 )
+
+[node name="donk129" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 128.929, 3.22436, 124.907 )
+
+[node name="donk130" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 187.997, 3.58364, 126.013 )
+
+[node name="donk131" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 175.003, 3.17304, 125.187 )
+
+[node name="donk132" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 164, 3.22436, 124.907 )
+
+[node name="donk133" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 187.997, 9.28756, 153.549 )
+
+[node name="donk134" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 175.003, 8.87696, 152.723 )
+
+[node name="donk135" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 164, 8.92828, 152.442 )
+
+[node name="donk151" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 146.493, 9.02588, 177.54 )
+
+[node name="donk154" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 133.498, 8.61527, 176.714 )
+
+[node name="donk175" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 122.496, 8.6666, 176.433 )
+
+[node name="donk229" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 111.158, 9.02588, 177.54 )
+
+[node name="donk239" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 98.1636, 8.61527, 176.714 )
+
+[node name="donk240" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 87.1611, 8.6666, 176.433 )
+
+[node name="donk176" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 138.345, 9.02588, 183.22 )
+
+[node name="donk177" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 125.351, 8.61527, 182.394 )
+
+[node name="donk178" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 114.348, 8.6666, 182.113 )
+
+[node name="donk179" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 132.075, 9.02588, 189.447 )
+
+[node name="donk180" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 119.08, 8.61527, 188.621 )
+
+[node name="donk181" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 108.078, 8.6666, 188.34 )
+
+[node name="donk182" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 101.178, 9.7372, 186.508 )
+
+[node name="donk183" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 88.1834, 9.32659, 185.683 )
+
+[node name="donk184" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 77.1809, 9.37792, 185.402 )
+
+[node name="donk185" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 64.9166, 9.7372, 185.612 )
+
+[node name="donk186" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 52.6237, 9.32659, 181.319 )
+
+[node name="donk187" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 42.1028, 9.37792, 178.088 )
+
+[node name="donk188" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 59.9366, 9.7372, 178.641 )
+
+[node name="donk189" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 47.6437, 9.32659, 174.348 )
+
+[node name="donk190" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 37.1228, 9.37792, 171.116 )
+
+[node name="donk191" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 55.201, 9.7372, 171.098 )
+
+[node name="donk192" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 42.9082, 9.32659, 166.805 )
+
+[node name="donk193" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.946006, 0, 0.324149, 0, 1, 0, -0.324149, 0, -0.946006, 32.3873, 9.37792, 163.573 )
+
+[node name="donk194" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 159.166 )
+
+[node name="donk195" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 150.611 )
+
+[node name="donk196" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 143.699 )
+
+[node name="donk197" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 145.955 )
+
+[node name="donk198" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 137.4 )
+
+[node name="donk199" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 130.488 )
+
+[node name="donk200" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 136.634 )
+
+[node name="donk201" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 128.079 )
+
+[node name="donk202" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 121.168 )
+
+[node name="donk203" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 126.125 )
+
+[node name="donk204" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 117.569 )
+
+[node name="donk205" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 110.658 )
+
+[node name="donk206" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 117.255 )
+
+[node name="donk207" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 108.7 )
+
+[node name="donk208" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 101.788 )
+
+[node name="donk209" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 107.538 )
+
+[node name="donk210" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 98.9828 )
+
+[node name="donk211" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 92.0713 )
+
+[node name="donk212" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 98.4088 )
+
+[node name="donk213" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 89.8534 )
+
+[node name="donk214" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 82.9419 )
+
+[node name="donk215" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 86.9628 )
+
+[node name="donk216" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 78.4075 )
+
+[node name="donk217" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 71.496 )
+
+[node name="donk218" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 41.3359, 9.7372, 72.3326 )
+
+[node name="donk219" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 31.5202, 9.32659, 63.7772 )
+
+[node name="donk220" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.75769, 0, 0.652614, 0, 1, 0, -0.652614, 0, -0.75769, 22.9549, 9.37792, 56.8657 )
+
+[node name="donk221" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.48993, 0, 0.871762, 0, 1, 0, -0.871762, 0, -0.48993, 36.9265, 9.7372, 49.8494 )
+
+[node name="donk222" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.48993, 0, 0.871762, 0, 1, 0, -0.871762, 0, -0.48993, 30.6139, 9.32659, 38.4611 )
+
+[node name="donk223" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.48993, 0, 0.871762, 0, 1, 0, -0.871762, 0, -0.48993, 24.9167, 9.37792, 29.0443 )
+
+[node name="donk227" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 35.6806, 9.7372, 32.844 )
+
+[node name="donk228" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 37.3387, 9.32659, 19.9292 )
+
+[node name="donk230" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 43.0864, 9.7372, 32.844 )
+
+[node name="donk231" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 44.7445, 9.32659, 19.9292 )
+
+[node name="donk232" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 45.7309, 9.37792, 8.96736 )
+
+[node name="donk233" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 50.9467, 9.7372, 23.7129 )
+
+[node name="donk234" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 52.6048, 9.32659, 10.7981 )
+
+[node name="donk235" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 53.5912, 9.37792, -0.163708 )
+
+[node name="donk236" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 58.8851, 9.7372, 15.3759 )
+
+[node name="donk237" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 60.5433, 9.32659, 2.46104 )
+
+[node name="donk238" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.121523, 0, 0.992589, 0, 1, 0, -0.992589, 0, 0.121523, 61.5296, 9.37792, -8.50076 )
+
+[node name="donk224" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.48993, 0, 0.871762, 0, 1, 0, -0.871762, 0, -0.48993, 31.1289, 9.7372, 56.2449 )
+
+[node name="donk225" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.48993, 0, 0.871762, 0, 1, 0, -0.871762, 0, -0.48993, 24.8163, 9.32659, 44.8566 )
+
+[node name="donk226" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.48993, 0, 0.871762, 0, 1, 0, -0.871762, 0, -0.48993, 19.1191, 9.37792, 35.4399 )
+
+[node name="donk136" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 192.947, 9.28756, 159.976 )
+
+[node name="donk137" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 179.952, 8.87696, 159.15 )
+
+[node name="donk138" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.998342, 0, 0.0575642, 0, 1, 0, -0.0575642, 0, -0.998342, 168.95, 8.92828, 158.869 )
+
+[node name="donk139" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.938878, 0, -0.34425, 0, 1, 0, 0.34425, 0, -0.938878, 221.134, 9.28756, 155.77 )
+
+[node name="donk140" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.938878, 0, -0.34425, 0, 1, 0, 0.34425, 0, -0.938878, 208.883, 8.87696, 160.181 )
+
+[node name="donk141" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.938878, 0, -0.34425, 0, 1, 0, 0.34425, 0, -0.938878, 198.676, 8.92828, 164.299 )
+
+[node name="donk142" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.938878, 0, -0.34425, 0, 1, 0, 0.34425, 0, -0.938878, 227.362, 9.28756, 165.099 )
+
+[node name="donk143" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.938878, 0, -0.34425, 0, 1, 0, 0.34425, 0, -0.938878, 215.111, 8.87696, 169.51 )
+
+[node name="donk144" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.938878, 0, -0.34425, 0, 1, 0, 0.34425, 0, -0.938878, 204.904, 8.92828, 173.628 )
+
+[node name="donk145" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 222.098, 9.28756, 137.515 )
+
+[node name="donk146" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 212.591, 8.87696, 146.413 )
+
+[node name="donk147" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 204.847, 8.92828, 154.233 )
+
+[node name="donk148" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 221.801, 9.28756, 124.105 )
+
+[node name="donk149" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 212.295, 8.87696, 133.003 )
+
+[node name="donk150" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 204.551, 8.92828, 140.823 )
+
+[node name="donk152" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 215.203, 8.87696, 118.204 )
+
+[node name="donk153" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 207.458, 8.92828, 126.025 )
+
+[node name="donk155" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 215.203, 8.87696, 107.163 )
+
+[node name="donk156" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 207.458, 8.92828, 114.983 )
+
+[node name="donk157" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 216.486, 8.87696, 97.5345 )
+
+[node name="donk158" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 208.742, 8.92828, 105.355 )
+
+[node name="donk159" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 218.518, 9.27855, 86.3527 )
+
+[node name="donk160" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 210.774, 9.32988, 94.1732 )
+
+[node name="donk161" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 219.864, 9.00862, 76.2018 )
+
+[node name="donk162" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 212.119, 9.05995, 84.0223 )
+
+[node name="donk163" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 222.957, 9.00862, 64.3201 )
+
+[node name="donk164" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 215.212, 9.05995, 72.1406 )
+
+[node name="donk165" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 226.615, 9.00862, 53.4879 )
+
+[node name="donk166" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.726071, 0, -0.68762, 0, 1, 0, 0.68762, 0, -0.726071, 218.871, 9.05995, 61.3084 )
+
+[node name="donk167" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.121073, 0, -0.992644, 0, 1, 0, 0.992644, 0, -0.121073, 221.659, 9.00862, 41.8412 )
+
+[node name="donk168" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.121073, 0, -0.992644, 0, 1, 0, 0.992644, 0, -0.121073, 220.678, 9.05995, 52.8035 )
+
+[node name="donk169" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.121073, 0, -0.992644, 0, 1, 0, 0.992644, 0, -0.121073, 221.659, 9.00862, 22.2693 )
+
+[node name="donk170" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.121073, 0, -0.992644, 0, 1, 0, 0.992644, 0, -0.121073, 220.678, 9.05995, 33.2315 )
+
+[node name="donk171" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.121073, 0, -0.992644, 0, 1, 0, 0.992644, 0, -0.121073, 229.719, 9.00862, 34.3188 )
+
+[node name="donk172" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.121073, 0, -0.992644, 0, 1, 0, 0.992644, 0, -0.121073, 228.737, 9.05995, 45.2811 )
+
+[node name="donk173" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.448414, 0, -0.893826, 0, 1, 0, 0.893826, 0, 0.448414, 225.312, 9.00862, 15.8652 )
+
+[node name="donk174" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( 0.448414, 0, -0.893826, 0, 1, 0, 0.893826, 0, 0.448414, 230.56, 9.05995, 25.5393 )
+
+[node name="donk241" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 66.525, 3.49717, 149.151 )
+
+[node name="donk242" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 55.4789, 3.08656, 142.257 )
+
+[node name="donk243" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 63.8911, 3.49717, 141.407 )
+
+[node name="donk244" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 52.845, 3.08656, 134.513 )
+
+[node name="donk245" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 61.225, 3.49717, 133.457 )
+
+[node name="donk246" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 50.1789, 3.08656, 126.563 )
+
+[node name="donk247" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 61.225, 3.49717, 126.007 )
+
+[node name="donk248" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 50.1789, 3.08656, 119.113 )
+
+[node name="donk249" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 64.0649, 3.49717, 118.033 )
+
+[node name="donk250" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 53.0187, 3.08656, 111.139 )
+
+[node name="donk251" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 64.0649, 3.49717, 110.997 )
+
+[node name="donk252" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.851434, 0, 0.524462, 0, 1, 0, -0.524462, 0, -0.851434, 53.0187, 3.08656, 104.103 )
+
+[node name="donk253" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 63.4249, 3.49717, 106.795 )
+
+[node name="donk254" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 53.6587, 3.08656, 98.183 )
+
+[node name="donk255" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 60.7757, 3.49717, 99.2794 )
+
+[node name="donk256" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 51.0096, 3.08656, 90.6675 )
+
+[node name="donk257" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 66.1872, 3.49717, 97.1888 )
+
+[node name="donk258" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 56.421, 3.08656, 88.5768 )
+
+[node name="donk259" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 64.2736, 3.49717, 90.1624 )
+
+[node name="donk260" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 54.5074, 3.08656, 81.5505 )
+
+[node name="donk261" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 71.6605, 3.49717, 87.0219 )
+
+[node name="donk262" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 61.8944, 3.08656, 78.4099 )
+
+[node name="donk263" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 53.4098, 3.08656, 72.117 )
+
+[node name="donk264" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 73.5424, 3.49717, 79.5266 )
+
+[node name="donk265" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 63.7762, 3.08656, 70.9147 )
+
+[node name="donk266" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.753907, 0, 0.656981, 0, 1, 0, -0.656981, 0, -0.753907, 55.2917, 3.08656, 64.6217 )
+
+[node name="donk267" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.539785, 0, 0.841803, 0, 1, 0, -0.841803, 0, -0.539785, 71.0906, 3.49717, 70.8655 )
+
+[node name="donk268" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.539785, 0, 0.841803, 0, 1, 0, -0.841803, 0, -0.539785, 64.1265, 3.08656, 59.8634 )
+
+[node name="donk269" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.539785, 0, 0.841803, 0, 1, 0, -0.841803, 0, -0.539785, 57.7435, 3.08656, 51.4464 )
+
+[node name="donk270" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.319422, 0, 0.947612, 0, 1, 0, -0.947612, 0, -0.319422, 68.5355, 3.49717, 54.3764 )
+
+[node name="donk271" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.319422, 0, 0.947612, 0, 1, 0, -0.947612, 0, -0.319422, 64.4488, 3.08656, 42.0135 )
+
+[node name="donk272" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.319422, 0, 0.947612, 0, 1, 0, -0.947612, 0, -0.319422, 60.2986, 3.08656, 32.2993 )
+
+[node name="donk273" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 86.2034, -4.24434, 45.611 )
+
+[node name="donk274" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 84.378, -4.65495, 32.7187 )
+
+[node name="donk275" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 82.0195, -4.65495, 22.4218 )
+
+[node name="donk276" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 91.9247, -4.24434, 48.9263 )
+
+[node name="donk277" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 90.0993, -4.65495, 36.034 )
+
+[node name="donk278" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 87.7409, -4.65495, 25.737 )
+
+[node name="donk279" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 97.0057, -4.24434, 42.5679 )
+
+[node name="donk280" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 95.1803, -4.65495, 29.6756 )
+
+[node name="donk281" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.145996, 0, 0.989285, 0, 1, 0, -0.989285, 0, -0.145996, 92.8218, -4.65495, 19.3786 )
+
+[node name="donk282" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 202.168, 0.050703, 73.671 )
+
+[node name="donk283" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 196.79, -0.359905, 85.5295 )
+
+[node name="donk284" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 193.255, -0.359905, 95.4839 )
+
+[node name="donk285" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 197.503, 0.050703, 68.1569 )
+
+[node name="donk286" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 192.125, -0.359905, 80.0154 )
+
+[node name="donk287" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 188.59, -0.359905, 89.9698 )
+
+[node name="donk288" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 193.151, 0.050703, 54.1705 )
+
+[node name="donk289" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 187.773, -0.359905, 66.0289 )
+
+[node name="donk290" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.407661, 0, -0.913133, 0, 1, 0, 0.913133, 0, -0.407661, 184.238, -0.359905, 75.9834 )
+
+[node name="donk291" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.181618, 0, -0.983369, 0, 1, 0, 0.983369, 0, -0.181618, 182.492, 0.050703, 38.3577 )
+
+[node name="donk292" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.181618, 0, -0.983369, 0, 1, 0, 0.983369, 0, -0.181618, 180.052, -0.359905, 51.148 )
+
+[node name="donk293" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.181618, 0, -0.983369, 0, 1, 0, 0.983369, 0, -0.181618, 178.956, -0.359905, 61.6545 )
+
+[node name="donk294" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.181618, 0, -0.983369, 0, 1, 0, 0.983369, 0, -0.181618, 203.512, -0.359905, 51.148 )
+
+[node name="donk295" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.181618, 0, -0.983369, 0, 1, 0, 0.983369, 0, -0.181618, 202.415, -0.359905, 61.6545 )
+
+[node name="donk296" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 214.182, 9.22119, 10.5433 )
+
+[node name="donk297" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 214.152, 9.22119, 21.1068 )
+
+[node name="donk298" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 208.643, 9.22119, 14.4512 )
+
+[node name="donk299" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 208.614, 9.22119, 25.0147 )
+
+[node name="donk300" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 202.914, 9.22119, 8.27413 )
+
+[node name="donk301" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 202.885, 9.22119, 18.8377 )
+
+[node name="donk302" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 197.362, 9.22119, 12.8122 )
+
+[node name="donk303" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 197.332, 9.22119, 23.3757 )
+
+[node name="donk304" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 192.575, 9.22119, 9.43987 )
+
+[node name="donk305" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 192.545, 9.22119, 20.0034 )
+
+[node name="donk306" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 187.344, 9.22119, 13.1131 )
+
+[node name="donk307" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 187.314, 9.22119, 23.6767 )
+
+[node name="donk308" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 182.403, 9.22119, 9.65978 )
+
+[node name="donk309" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 182.374, 9.22119, 20.2233 )
+
+[node name="donk310" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 178.254, 9.22119, 13.8598 )
+
+[node name="donk311" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 178.224, 9.22119, 24.4233 )
+
+[node name="donk312" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 172.296, 9.22119, 8.15571 )
+
+[node name="donk313" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 172.267, 9.22119, 18.7192 )
+
+[node name="donk314" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 172.296, -0.687959, 34.8176 )
+
+[node name="donk315" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 172.267, -0.687959, 45.3811 )
+
+[node name="donk316" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 165.42, -0.687959, 38.0931 )
+
+[node name="donk317" parent="donk_congree" instance=ExtResource( 4 )]
+transform = Transform( -0.081347, 0, -0.996686, 0, 1, 0, 0.996686, 0, -0.081347, 165.391, -0.687959, 48.6566 )
+
+[node name="lights" type="Spatial" parent="."]
+
+[node name="cavern_light" type="SpotLight" parent="lights"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 129.278, 123.697, 121.102 )
+visible = false
+light_color = Color( 0.670588, 0.466667, 0.466667, 1 )
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_specular = 1.0
+light_bake_mode = 2
+spot_range = 144.0
+spot_angle = 54.0
+
+[node name="end_trigger" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 122.435, 39.2915, 31.5806 )
+
+[node name="CollisionShape" type="CollisionShape" parent="end_trigger"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01058, -1.59233, 44.7547 )
+shape = SubResource( 7 )
+
+[node name="moon_stuff" type="Spatial" parent="."]
+
+[node name="moon_mesh" type="MeshInstance" parent="moon_stuff"]
+transform = Transform( 100, 0, 0, 0, 79.3205, 60.8955, 0, -60.8955, 79.3205, 128.245, 71.7643, 364.741 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="OmniLight" type="SpotLight" parent="moon_stuff/moon_mesh"]
+transform = Transform( 0.00643644, -0.00765318, 3.1959e-05, -0.00758358, -0.00638342, -0.00131956, 0.00103029, 0.000825093, -0.0099125, -0.075693, -0.414826, -2.29068 )
+light_color = Color( 0.533333, 0.258824, 0.258824, 1 )
+light_energy = 4.0
+light_indirect_energy = 19.09
+light_specular = 1.0
+light_bake_mode = 2
+spot_range = 317.568
+spot_angle = 34.6227
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moon_stuff"]
+playback_speed = 0.1
+anims/black_hole = SubResource( 10 )
+anims/room_raise = SubResource( 11 )
+
+[node name="black_hole_mesh" type="MeshInstance" parent="moon_stuff"]
+transform = Transform( 250, 0, 0, 0, 183.374, 7.98362, 0, -79.8363, 18.3374, 126.51, 656.988, 494.451 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 14 )
+script = ExtResource( 13 )
+
+[node name="tentacles" type="Sprite3D" parent="moon_stuff/black_hole_mesh"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+modulate = Color( 1, 1, 1, 0 )
+billboard = 1
+texture = ExtResource( 11 )
+
+[node name="violin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="singing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+volume_db = -1.0
+
+[node name="audio_anim" type="AnimationPlayer" parent="."]
+playback_speed = 0.25
+anims/make_singing_louder = SubResource( 15 )
+
+[node name="path" type="Spatial" parent="."]
+
+[node name="arches" type="Spatial" parent="path"]
+
+[node name="arch6" parent="path/arches" instance=ExtResource( 20 )]
+transform = Transform( 1.25, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 123.76, 29.9904, 1.28259 )
+
+[node name="arch" parent="path/arches" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 5.96046e-08, 1, 0, -1, 5.96046e-08, 123.044, 29.9904, 15.8099 )
+
+[node name="arch2" parent="path/arches" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 5.96046e-08, 1, 0, -1, 5.96046e-08, 123.494, 29.5984, 29.1357 )
+
+[node name="arch3" parent="path/arches" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 5.96046e-08, 1, 0, -1, 5.96046e-08, 125.533, 30.4082, 41.7491 )
+
+[node name="arch4" parent="path/arches" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 5.96046e-08, 1, 0, -1, 5.96046e-08, 126.266, 31.2587, 54.6193 )
+
+[node name="arch5" parent="path/arches" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 5.96046e-08, 1, 0, -1, 5.96046e-08, 127.137, 34.6611, 66.9483 )
+
+[node name="fence" type="Spatial" parent="path"]
+
+[node name="Spatial" parent="path/fence" instance=ExtResource( 21 )]
+transform = Transform( 0.988578, 0, -0.150709, 0, 1, 0, 0.150709, 0, 0.988578, 133.124, 31.4743, 9.50935 )
+
+[node name="Spatial2" parent="path/fence" instance=ExtResource( 21 )]
+transform = Transform( 0.998332, 0, -0.0577383, 0, 1, 0, 0.0577383, 0, 0.998332, 122.142, 31.4743, 9.50935 )
+
+[node name="fence" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 121.883, 31.2574, 19.9251 )
+
+[node name="fence16" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.99798, 0, 0.0635221, 0, 2, 0, -0.0635221, 0, 0.99798, 131.972, 31.2574, 20.2357 )
+
+[node name="fence2" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 121.883, 31.2574, 25.5186 )
+
+[node name="fence15" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 132.399, 31.1573, 26.6028 )
+
+[node name="fence3" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.978354, 0, 0.206939, 0, 2, 0, -0.206939, 0, 0.978354, 122.663, 31.2574, 32.9488 )
+
+[node name="fence14" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.997425, 0, 0.0717237, 0, 2, 0, -0.0717237, 0, 0.997425, 132.702, 31.2574, 32.7247 )
+
+[node name="fence4" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.991888, 0, 0.127117, 0, 2, 0, -0.127117, 0, 0.991888, 123.616, 31.5472, 38.5371 )
+
+[node name="fence13" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.962275, 0, 0.272079, 0, 2, 0, -0.272079, 0, 0.962275, 133.855, 31.5472, 38.4581 )
+
+[node name="fence5" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.996296, 0, 0.0859907, 0, 2, 0, -0.0859907, 0, 0.996296, 124.349, 31.9238, 44.8439 )
+
+[node name="fence12" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.996296, 0, 0.0859907, 0, 2, 0, -0.0859907, 0, 0.996296, 135.058, 31.9238, 44.4203 )
+
+[node name="fence6" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.999997, 0, -0.00251329, 0, 2, 0, 0.00251329, 0, 0.999997, 124.688, 32.2174, 50.5514 )
+
+[node name="fence11" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.999487, 0, -0.0320213, 0, 2, 0, 0.0320213, 0, 0.999487, 135.337, 32.3496, 50.263 )
+
+[node name="fence7" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.999997, 0, -0.00251329, 0.000336051, 1.98204, 0.133709, 0.00249072, -0.267419, 0.991017, 124.688, 32.5161, 56.3466 )
+
+[node name="fence10" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.991964, 0.0331738, -0.125431, 0.0103675, 1.95476, 0.211238, 0.126098, -0.421682, 0.969353, 134.968, 32.5161, 56.5495 )
+
+[node name="fence8" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.992885, -0.0611784, 0.115082, -0.00978419, 1.88443, 0.33486, -0.118675, -0.667208, 0.935214, 124.988, 34.1953, 61.9572 )
+
+[node name="fence9" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.973688, -0.13454, 0.217732, -0.00978419, 1.88443, 0.33486, -0.227677, -0.656359, 0.916767, 135.394, 34.8739, 62.3646 )
+
+[node name="fence17" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.956777, -0.148301, 0.281211, 0.0479263, 1.98786, 0.0990204, -0.286847, -0.162526, 0.954524, 136.969, 36.3426, 68.3137 )
+
+[node name="fence18" parent="path/fence" instance=ExtResource( 22 )]
+transform = Transform( 0.977817, -0.0528979, -0.207783, 0.0479263, 1.98786, 0.0990204, 0.203903, -0.213564, 0.97315, 124.419, 36.3426, 68.3137 )
+
+[node name="lights" type="Spatial" parent="path"]
+
+[node name="SpotLight" type="SpotLight" parent="path/lights"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 126.612, 38.3016, 15.9922 )
+spot_range = 10.5928
+spot_angle = 33.3237
+
+[node name="SpotLight2" type="SpotLight" parent="path/lights"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 127.238, 37.9171, 29.0579 )
+spot_range = 10.5928
+spot_angle = 33.3237
+
+[node name="SpotLight3" type="SpotLight" parent="path/lights"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 129.332, 38.9338, 41.3283 )
+spot_range = 10.5928
+spot_angle = 33.3237
+
+[node name="SpotLight4" type="SpotLight" parent="path/lights"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 129.947, 39.8607, 54.5164 )
+spot_range = 10.5928
+spot_angle = 33.3237
+
+[node name="SpotLight5" type="SpotLight" parent="path/lights"]
+transform = Transform( 1, 0, 0, 0, -0.20868, 0.977984, 0, -0.977984, -0.20868, 130.793, 43.2642, 66.7758 )
+spot_range = 13.1488
+spot_angle = 44.4372
+[connection signal="animation_finished" from="geometry/roofs/Camera/AnimationPlayer" to="." method="_on_cutscene_animation_finished"]
+[connection signal="timeout" from="geometry/roofs/final_cutscene_trigger_delay" to="." method="_on_final_cutscene_trigger_delay_timeout"]
+[connection signal="body_entered" from="end_trigger" to="." method="_on_end_trigger_body_entered"]
+[connection signal="animation_finished" from="moon_stuff/AnimationPlayer" to="." method="_on_moon_animation_finished"]

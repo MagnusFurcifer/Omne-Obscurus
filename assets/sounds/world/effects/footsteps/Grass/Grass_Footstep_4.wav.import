@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Grass_Footstep_4.wav-005c8e84d980c03b272d3a116d6e64a2.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/effects/footsteps/Grass/Grass_Footstep_4.wav"
+dest_files=[ "res://.import/Grass_Footstep_4.wav-005c8e84d980c03b272d3a116d6e64a2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

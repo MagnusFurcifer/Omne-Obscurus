@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/390124__xploman__door-creak-01_reverse.wav-ad7608193e27a39ec120e37d81d0ee95.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/effects/390124__xploman__door-creak-01_reverse.wav"
+dest_files=[ "res://.import/390124__xploman__door-creak-01_reverse.wav-ad7608193e27a39ec120e37d81d0ee95.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

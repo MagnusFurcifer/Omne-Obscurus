@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dark_I bought_lantern.wav-afd25760a8f0587121fdb73f08a754a6.sample"
+
+[deps]
+
+source_file="res://assets/VO/dark_I bought_lantern.wav"
+dest_files=[ "res://.import/dark_I bought_lantern.wav-afd25760a8f0587121fdb73f08a754a6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

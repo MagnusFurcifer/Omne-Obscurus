@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/530356__danielpodlovics__electricity.wav-c8db6f2a3af726f3cc6e8d45d486256e.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/effects/530356__danielpodlovics__electricity.wav"
+dest_files=[ "res://.import/530356__danielpodlovics__electricity.wav-c8db6f2a3af726f3cc6e8d45d486256e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

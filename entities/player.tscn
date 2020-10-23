@@ -1,0 +1,831 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/grab_icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/effects/white.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/look_icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/mouse_right.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/mouse_left.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/torch_icon.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/latin.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/sounds/world/effects/puzzles/522699__quedicemipez__magic-explosion.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/world/effects/390124__xploman__door-creak-01.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/world/effects/390124__xploman__door-creak-01_reverse.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/world/effects/104534__skyumori__door-locked-02.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/world/effects/447932__breviceps__paper.wav" type="AudioStream" id=13]
+[ext_resource path="res://entities/items/player_lantern_hand.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/sounds/world/effects/531499__rickplayer__open-bag-sound.wav" type="AudioStream" id=15]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( -0.00963701, -0.00180552, -0.00963512, -0.00963701, 0.00180552, -0.00963512, -0.00924592, -0.000865221, -0.00866488, -0.00924592, 0.000865221, -0.00866488, -0.00909957, -0.00363945, -0.00970582, -0.00909957, 0.00363945, -0.00970582, -0.00851862, -0.00486833, -0.00973476, -0.00851862, 0.00486833, -0.00973476, -0.00774269, -0.00516239, -0.00860159, -0.00770836, -0.00592894, -0.00948593, -0.00770836, 0.00592894, -0.00948593, -0.00660984, -0.00660984, -0.00861926, -0.00660984, 0.00660984, -0.00861926, -0.00592893, -0.00770836, -0.00948592, -0.00592893, 0.00770836, -0.00948592, -0.00516143, -0.00774394, -0.00860298, -0.00516143, 0.00774394, -0.00860298, -0.00425836, -0.00882361, -0.00973475, -0.00425836, 0.00882361, -0.00973475, -0.00363945, -0.00909957, -0.00970582, -0.00363945, 0.00909957, -0.00970582, -0.00180734, -0.00963665, -0.00963476, -0.00180734, 0.00963665, -0.00963476, -0.0014355, -0.000573842, 0.0068915, -0.0014355, 0.000573842, 0.0068915, -0.000865221, -0.00924592, -0.00866488, -0.000865221, 0.00924592, -0.00866488, -0.000573841, -0.0014355, 0.0068915, -0.000573841, 0.0014355, 0.0068915, -0.000286183, -0.000286183, 0.00919385, -0.000286183, 0.000286183, 0.00919385, 0.000286183, -0.000286183, 0.00919385, 0.000286183, 0.000286183, 0.00919385, 0.000861816, -0.00374115, 0.00230238, 0.000861816, 0.00374115, 0.00230238, 0.00121858, 0.00975628, -0.00975629, 0.00124902, -0.005, -0.01, 0.0014355, -0.000573842, 0.0068915, 0.0014355, 0.000573842, 0.0068915, 0.00151492, -0.00969702, -0.00969702, 0.00201689, 0.00893424, -0.00835644, 0.00364014, -0.0091013, -0.00970957, 0.00364014, 0.0091013, -0.00970957, 0.00425917, -0.00882529, -0.00973852, 0.00425917, 0.00882529, -0.00973852, 0.00516332, -0.00774408, -0.00860493, 0.00516332, 0.00774408, -0.00860493, 0.00593004, -0.00770979, -0.00948954, 0.00593004, 0.00770979, -0.00948954, 0.0059722, -0.00597398, -0.00682588, 0.0059722, 0.00597398, -0.00682588, 0.00748215, -0.00628576, -0.00957866, 0.00748215, 0.00628576, -0.00957866, 0.00774408, -0.00516332, -0.00860493, 0.00774408, 0.00516332, -0.00860493, 0.00852025, -0.00486926, -0.00973852, 0.00852025, 0.00486926, -0.00973852, 0.00886512, 0.00257282, -0.00857845, 0.0091013, -0.00364014, -0.00970957, 0.0091013, 0.00364014, -0.00970957, 0.00924759, -0.000865378, -0.00866826, 0.00924759, 0.000865378, -0.00866826, 0.00963883, -0.00180587, -0.00963883, 0.00963883, 0.00180587, -0.00963883 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float size_x = 0.0001;
+uniform float size_y = 0.0001;
+
+void fragment() {
+	vec2 uv = SCREEN_UV;
+	uv -= mod(uv, vec2(size_x, size_y));
+	
+	COLOR.rgb = textureLod(SCREEN_TEXTURE, uv, 0.0).rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/size_x = 0.002
+shader_param/size_y = 0.002
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_color = Color( 0.72549, 0.286275, 0.305882, 1 )
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "background_fade_in"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("black_rec:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "date_show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("date:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.8, 0.8, 0.8, 0 ), Color( 0.8, 0.8, 0.8, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "location_show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("location:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.8, 0.8, 0.8, 0 ), Color( 0.8, 0.8, 0.8, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("black_rec:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "text_disappear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("location:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.8, 0.8, 0.8, 1 ), Color( 0.8, 0.8, 0.8, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("date:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.8, 0.8, 0.8, 1 ), Color( 0.8, 0.8, 0.8, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "hide_instructions"
+tracks/0/type = "value"
+tracks/0/path = NodePath("grab_icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("grab_icon/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("look_icon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("look_icon/Sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("torch_icon:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("torch_icon/Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "show_instructions"
+tracks/0/type = "value"
+tracks/0/path = NodePath("grab_icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("grab_icon/Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("look_icon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("look_icon/Sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("torch_icon:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("torch_icon/Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "bring_out_lantern"
+tracks/0/type = "value"
+tracks/0/path = NodePath("lantern:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.0821235, -0.675516, 0.27667 ), Vector3( 0.0821235, -0.343782, -0.317956 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lantern/player_lantern:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "put_away_lantern"
+tracks/0/type = "value"
+tracks/0/path = NodePath("lantern:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.0821235, -0.343782, -0.317956 ), Vector3( 0.0821235, -0.675516, 0.27667 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("lantern/player_lantern:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="CapsuleShape" id=14]
+radius = 0.5
+
+[sub_resource type="CapsuleMesh" id=15]
+radius = 0.5
+
+[sub_resource type="CapsuleShape" id=16]
+radius = 0.502187
+height = 0.002
+
+[node name="player" type="KinematicBody" groups=[
+"portal_bois",
+]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 1 )
+speed = 5.0
+
+[node name="head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783891, -0.558211 )
+
+[node name="Camera" type="Camera" parent="head"]
+far = 500.0
+
+[node name="note_location" type="Spatial" parent="head/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000731826, -1.19209e-07, -0.421219 )
+
+[node name="flashlight" type="SpotLight" parent="head/Camera"]
+light_color = Color( 0.701961, 0.698039, 0.635294, 1 )
+light_indirect_energy = 4.0
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 0.0
+spot_angle = 20.0
+spot_angle_attenuation = 1.10957
+
+[node name="flash_light_visible_area" type="Area" parent="head/Camera/flashlight"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.71503 )
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape" type="CollisionShape" parent="head/Camera/flashlight/flash_light_visible_area"]
+transform = Transform( 898.345, 0, 0, 0, 858.408, 0, 0, 0, 1189.26, 0, 0, -14.1062 )
+shape = SubResource( 1 )
+
+[node name="use_ray" type="RayCast" parent="head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -3 )
+collision_mask = 5
+
+[node name="scare_ray" type="RayCast" parent="head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -12 )
+collision_mask = 5
+collide_with_areas = true
+
+[node name="UI" type="Control" parent="head/Camera"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="psx_shader" type="TextureRect" parent="head/Camera/UI"]
+material = SubResource( 3 )
+margin_top = 1.5874
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="black_fade_in_intro" type="Control" parent="head/Camera/UI"]
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="black_rec" type="ColorRect" parent="head/Camera/UI/black_fade_in_intro"]
+margin_right = 1280.0
+margin_bottom = 720.0
+mouse_filter = 1
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="location" type="Label" parent="head/Camera/UI/black_fade_in_intro"]
+margin_left = 353.009
+margin_top = 264.285
+margin_right = 947.009
+margin_bottom = 397.285
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.8, 0.8, 0.8, 0 )
+text = "Deep in the northern ranges."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="date" type="Label" parent="head/Camera/UI/black_fade_in_intro"]
+margin_left = 496.478
+margin_top = 326.581
+margin_right = 1090.48
+margin_bottom = 459.581
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.8, 0.8, 0.8, 0 )
+text = "Febuary 1924"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera/UI/black_fade_in_intro"]
+anims/background_fade_in = SubResource( 5 )
+anims/date_show = SubResource( 6 )
+anims/location_show = SubResource( 7 )
+anims/text_disappear = SubResource( 8 )
+
+[node name="stage1" type="Timer" parent="head/Camera/UI/black_fade_in_intro"]
+wait_time = 1.5
+one_shot = true
+
+[node name="stage2" type="Timer" parent="head/Camera/UI/black_fade_in_intro"]
+wait_time = 1.5
+one_shot = true
+
+[node name="stage3" type="Timer" parent="head/Camera/UI/black_fade_in_intro"]
+wait_time = 1.5
+one_shot = true
+
+[node name="note_node" type="Control" parent="head/Camera/UI"]
+margin_left = 395.122
+margin_top = 94.1907
+margin_right = 435.122
+margin_bottom = 134.191
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="center_indicators" type="Control" parent="head/Camera/UI"]
+margin_left = 640.0
+margin_top = 360.0
+margin_right = 950.157
+margin_bottom = 516.881
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grab_icon" type="Sprite" parent="head/Camera/UI/center_indicators"]
+position = Vector2( -21.8268, -0.396851 )
+texture = ExtResource( 2 )
+
+[node name="look_icon" type="Sprite" parent="head/Camera/UI/center_indicators"]
+position = Vector2( 38.0976, 1.19055 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="instructions" type="Control" parent="head/Camera/UI"]
+margin_left = 58.733
+margin_top = 40.0452
+margin_right = 98.733
+margin_bottom = 80.0452
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grab_icon" type="Sprite" parent="head/Camera/UI/instructions"]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="head/Camera/UI/instructions/grab_icon"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 49, 1.5 )
+texture = ExtResource( 6 )
+
+[node name="look_icon" type="Sprite" parent="head/Camera/UI/instructions"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -4.4922, 76.891 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="head/Camera/UI/instructions/look_icon"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 96, -4 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="torch_icon" type="Sprite" parent="head/Camera/UI/instructions"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -14.1111, 135.956 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="head/Camera/UI/instructions/torch_icon"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 39.2001
+margin_top = -14.8325
+margin_right = 79.2001
+margin_bottom = 18.1675
+custom_fonts/font = SubResource( 9 )
+text = "(F)"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera/UI/instructions"]
+anims/hide_instructions = SubResource( 10 )
+anims/show_instructions = SubResource( 11 )
+
+[node name="messages" type="Control" parent="head/Camera/UI"]
+margin_left = 53.4873
+margin_top = 636.886
+margin_right = 93.4873
+margin_bottom = 676.886
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="debug" type="Control" parent="head/Camera/UI"]
+visible = false
+margin_left = 1030.5
+margin_top = 591.334
+margin_right = 1070.5
+margin_bottom = 631.334
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="puzzle_debug_panel" type="Panel" parent="head/Camera/UI/debug"]
+margin_right = 250.0
+margin_bottom = 128.0
+mouse_filter = 1
+
+[node name="puzzle_0_active" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "puzzle_0_active: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_0_active"]
+margin_left = 104.451
+margin_top = 0.667421
+margin_right = 144.451
+margin_bottom = 14.6674
+text = "0"
+
+[node name="puzzle_1_active" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_left = -0.33371
+margin_top = 15.0169
+margin_right = 107.666
+margin_bottom = 29.0169
+text = "puzzle_1_active: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_1_active"]
+margin_left = 104.785
+margin_top = 2.00226
+margin_right = 144.785
+margin_bottom = 16.0023
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="puzzle_0_viewport" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_left = -0.33371
+margin_top = 27.6979
+margin_right = 116.666
+margin_bottom = 41.6979
+text = "puzzle_0_viewport:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_0_viewport"]
+margin_left = 119.802
+margin_top = 0.667419
+margin_right = 159.802
+margin_bottom = 14.6674
+text = "0"
+
+[node name="puzzle_1_viewport" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_left = -0.33371
+margin_top = 41.7137
+margin_right = 116.666
+margin_bottom = 55.7137
+text = "puzzle_1_viewport:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_1_viewport"]
+margin_left = 120.136
+margin_top = 1.00113
+margin_right = 160.136
+margin_bottom = 15.0011
+text = "0"
+
+[node name="puzzle_pillar_mouse" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_left = 0.33371
+margin_top = 54.7284
+margin_right = 134.334
+margin_bottom = 68.7284
+text = "puzzle_pillar_mouse:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_pillar_mouse"]
+margin_left = 133.484
+margin_top = 1.33484
+margin_right = 173.484
+margin_bottom = 15.3348
+text = "0"
+
+[node name="puzzle_pillar_mouse_global" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_top = 68.7442
+margin_right = 178.0
+margin_bottom = 82.7442
+text = "puzzle_pillar_mouse_global:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_pillar_mouse_global"]
+margin_left = 176.533
+margin_top = 1.00113
+margin_right = 216.533
+margin_bottom = 15.0011
+text = "0"
+
+[node name="puzzle_mouse" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_top = 81.7589
+margin_right = 134.0
+margin_bottom = 95.7589
+text = "puzzle_mouse:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_mouse"]
+margin_left = 96.4422
+margin_top = 1.00113
+margin_right = 136.442
+margin_bottom = 15.0011
+text = "0"
+
+[node name="puzzle_mouse_global" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_left = -0.33371
+margin_top = 95.7747
+margin_right = 133.666
+margin_bottom = 109.775
+text = "puzzle_mouse_global:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_mouse_global"]
+margin_left = 138.823
+margin_top = 1.33484
+margin_right = 178.823
+margin_bottom = 15.3348
+text = "0"
+
+[node name="puzzle_pillar_0_entered" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel"]
+margin_left = 0.33371
+margin_top = 111.125
+margin_right = 140.334
+margin_bottom = 125.125
+text = "puzzle_mouse_global:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/puzzle_debug_panel/puzzle_pillar_0_entered"]
+margin_left = 138.823
+margin_top = 1.33484
+margin_right = 178.823
+margin_bottom = 15.3348
+text = "0"
+
+[node name="light_debug_panel" type="Panel" parent="head/Camera/UI/debug"]
+margin_top = -103.827
+margin_right = 256.0
+margin_bottom = -7.82745
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="current_world_energy" type="Label" parent="head/Camera/UI/debug/light_debug_panel"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Current World Energy:"
+
+[node name="Label" type="Label" parent="head/Camera/UI/debug/light_debug_panel/current_world_energy"]
+margin_left = 141.968
+margin_top = 1.05948
+margin_right = 181.968
+margin_bottom = 15.0595
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lantern" parent="head/Camera" instance=ExtResource( 14 )]
+transform = Transform( -0.01, 0, -3.25841e-09, 0, 0.01, 0, 3.25841e-09, 0, -0.01, 0.0821235, -0.675516, 0.27667 )
+
+[node name="player_lantern" type="SpotLight" parent="head/Camera/lantern"]
+transform = Transform( -100, 0, -3.25841e-05, 0, 100, 0, 3.25841e-05, 0, -100, 0.244492, 11.1674, 10.5003 )
+visible = false
+light_color = Color( 0.701961, 0.698039, 0.635294, 1 )
+light_indirect_energy = 4.0
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 26.0
+spot_angle = 20.0
+spot_angle_attenuation = 1.10957
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera"]
+anims/bring_out_lantern = SubResource( 12 )
+anims/put_away_lantern = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 14 )
+
+[node name="slope_ray" type="RayCast" parent="CollisionShape"]
+enabled = true
+cast_to = Vector3( 0, 0, 1.25 )
+collide_with_areas = true
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="bouancy_area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="bouancy_area"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.472361, 0 )
+shape = SubResource( 16 )
+
+[node name="gameplay_sounds" type="Spatial" parent="."]
+
+[node name="magical_sound" type="AudioStreamPlayer" parent="gameplay_sounds"]
+stream = ExtResource( 9 )
+
+[node name="door_open" type="AudioStreamPlayer" parent="gameplay_sounds"]
+stream = ExtResource( 10 )
+pitch_scale = 1.5
+
+[node name="door_close" type="AudioStreamPlayer" parent="gameplay_sounds"]
+stream = ExtResource( 11 )
+pitch_scale = 1.5
+
+[node name="door_locked" type="AudioStreamPlayer" parent="gameplay_sounds"]
+stream = ExtResource( 12 )
+
+[node name="paper_crumple" type="AudioStreamPlayer" parent="gameplay_sounds"]
+stream = ExtResource( 13 )
+
+[node name="foot_steps" type="AudioStreamPlayer" parent="gameplay_sounds"]
+volume_db = 1.0
+
+[node name="footstep_delay" type="Timer" parent="gameplay_sounds/foot_steps"]
+wait_time = 0.5
+one_shot = true
+
+[node name="open_bag" type="AudioStreamPlayer" parent="gameplay_sounds"]
+stream = ExtResource( 15 )
+
+[node name="voice" type="AudioStreamPlayer" parent="."]
+volume_db = 1.0
+[connection signal="body_entered" from="head/Camera/flashlight/flash_light_visible_area" to="." method="_on_flashlight_area_entered"]
+[connection signal="body_exited" from="head/Camera/flashlight/flash_light_visible_area" to="." method="_on_flashlight_area_exited"]
+[connection signal="animation_finished" from="head/Camera/UI/black_fade_in_intro/AnimationPlayer" to="." method="_on_fadein_intro_animation_finished"]
+[connection signal="timeout" from="head/Camera/UI/black_fade_in_intro/stage1" to="." method="_on_stage1_timeout"]
+[connection signal="timeout" from="head/Camera/UI/black_fade_in_intro/stage2" to="." method="_on_stage2_timeout"]
+[connection signal="timeout" from="head/Camera/UI/black_fade_in_intro/stage3" to="." method="_on_stage3_timeout"]
+[connection signal="animation_finished" from="head/Camera/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

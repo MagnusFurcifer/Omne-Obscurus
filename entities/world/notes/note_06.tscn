@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/notes/Parchment.00.jpg" type="Texture" id=1]
+[ext_resource path="res://entities/fonts/hand_writing.tres" type="DynamicFont" id=2]
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 2978.0
+margin_bottom = 2240.0
+rect_scale = Vector2( 0.15, 0.3 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 12.3729
+margin_top = 18.0241
+margin_right = 471.373
+margin_bottom = 215.024
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "From the desk of Allison Shadsbury
+
+
+
+
+
+Stuck in this infernal cesspit, but at least there is
+a library. 
+
+I had my back turned for but a second and my 
+companion dissapeared. I do not beleive they 
+could have gotten past me to the door, there must
+be a secret passage or door hidden somewhere in
+this library. 
+
+
+I swear, Alexia would lose her head if it wasn't 
+fastned to her neck.
+
+
+When we finally get what we came for, I'm going
+to have to give serious thought to our continued
+partnership.
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 403.63
+margin_top = 669.354
+margin_right = 443.63
+margin_bottom = 709.354
+rect_scale = Vector2( 10.8819, 2.07866 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

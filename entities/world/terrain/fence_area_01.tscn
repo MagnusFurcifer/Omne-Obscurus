@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/world/objects/fence/FullFence3.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/world/objects/fence/Fence15.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/world/objects/fence/FullFence4.tscn" type="PackedScene" id=3]
+
+[node name="fence" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.723793, 0 )
+
+[node name="FullFence3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.995453, 0, -0.0952551, 0, 0.5, 0, 0.0952551, 0, 0.995453, 23.292, 13.2727, 106.009 )
+
+[node name="FullFence5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.983401, 0, 0.181446, 0, 0.5, 0, -0.181446, 0, 0.983401, 16.6968, 13.1324, 48.1071 )
+
+[node name="FullFence6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.64236, 0, -0.766403, 0, 0.5, 0, 0.766403, 0, 0.64236, 6.33492, 13.2836, 138.793 )
+
+[node name="Fence15" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="FullFence4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.943737, 0, 0.330696, 0, 0.5, 0, -0.330696, 0, 0.943737, 22.6822, 13.2388, 74.8062 )

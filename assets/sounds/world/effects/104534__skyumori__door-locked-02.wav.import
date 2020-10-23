@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/104534__skyumori__door-locked-02.wav-bf9c8b5a02b623afa94195a3eb5cbcae.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/effects/104534__skyumori__door-locked-02.wav"
+dest_files=[ "res://.import/104534__skyumori__door-locked-02.wav-bf9c8b5a02b623afa94195a3eb5cbcae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

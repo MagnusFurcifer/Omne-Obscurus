@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/MedievalHouse.obj-067f5b15269f7c1f13782a03cfceef4e.mesh"
+
+[deps]
+
+files=[ "res://.import/MedievalHouse.obj-067f5b15269f7c1f13782a03cfceef4e.mesh" ]
+
+source_file="res://assets/models/house/MedievalHouse.obj"
+dest_files=[ "res://.import/MedievalHouse.obj-067f5b15269f7c1f13782a03cfceef4e.mesh", "res://.import/MedievalHouse.obj-067f5b15269f7c1f13782a03cfceef4e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

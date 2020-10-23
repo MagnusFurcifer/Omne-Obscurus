@@ -1,0 +1,151 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/puzzles/controls/exit_hover.png" type="Texture" id=1]
+[ext_resource path="res://assets/puzzles/Marble015_2K_Color.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/puzzles/draw_area.jpg" type="Texture" id=3]
+[ext_resource path="res://scripts/puzzles/puzzle_0.gd" type="Script" id=5]
+[ext_resource path="res://assets/puzzles/controls/runes/os.png" type="Texture" id=6]
+[ext_resource path="res://assets/puzzles/controls/exit.png" type="Texture" id=8]
+[ext_resource path="res://assets/puzzles/controls/runes/yri.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/latin.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 1
+outline_color = Color( 0.72549, 0.286275, 0.305882, 1 )
+use_filter = true
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "closed"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dimensional Lock Engaged" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:custom_fonts/normal_font:outline_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.72549, 0.286275, 0.305882, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_fonts/normal_font:outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.258824, 0.407843, 0.266667, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dimensional Lock Disengaged" ]
+}
+
+[node name="puzzle" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 1.27887
+margin_right = 2049.28
+margin_bottom = 2048.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="drawing_zone" type="TextureRect" parent="."]
+margin_left = 142.0
+margin_top = 100.0
+margin_right = 364.0
+margin_bottom = 440.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit_button" type="TextureButton" parent="."]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 136.0
+margin_bottom = 132.0
+rect_scale = Vector2( 0.25, 0.25 )
+mouse_filter = 1
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 256, 400, 256, 100 )
+default_color = Color( 0.184314, 0.192157, 0.219608, 1 )
+
+[node name="rune_sprite" type="TextureRect" parent="."]
+margin_left = 17.0
+margin_top = 128.0
+margin_right = 145.0
+margin_bottom = 256.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rune_sprite2" type="TextureRect" parent="."]
+margin_left = 346.0
+margin_top = 128.0
+margin_right = 474.0
+margin_bottom = 256.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lock_label" type="RichTextLabel" parent="."]
+margin_left = 132.33
+margin_top = 6.33032
+margin_right = 484.33
+margin_bottom = 46.3303
+custom_fonts/normal_font = SubResource( 2 )
+meta_underlined = false
+text = "Dimensional Lock Engaged"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="lock_label"]
+anims/closed = SubResource( 3 )
+anims/open = SubResource( 4 )
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]

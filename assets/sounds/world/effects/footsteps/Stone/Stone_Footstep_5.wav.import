@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Stone_Footstep_5.wav-b39b8b7a681cead95fc03a7415cb5c87.sample"
+
+[deps]
+
+source_file="res://assets/sounds/world/effects/footsteps/Stone/Stone_Footstep_5.wav"
+dest_files=[ "res://.import/Stone_Footstep_5.wav-b39b8b7a681cead95fc03a7415cb5c87.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

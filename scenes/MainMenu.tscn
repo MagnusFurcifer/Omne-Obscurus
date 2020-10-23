@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/latin.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://entities/fonts/old_london.tres" type="DynamicFont" id=3]
+[ext_resource path="res://entities/fonts/square_font.tres" type="DynamicFont" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start_game" type="Button" parent="."]
+margin_left = 184.078
+margin_top = 490.166
+margin_right = 485.078
+margin_bottom = 552.166
+custom_fonts/font = ExtResource( 4 )
+text = "Start Game"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit_game" type="Button" parent="."]
+margin_left = 790.776
+margin_top = 487.338
+margin_right = 1070.78
+margin_bottom = 549.338
+custom_fonts/font = ExtResource( 4 )
+text = "Exit Game"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 193.412
+margin_top = 84.8009
+margin_right = 452.412
+margin_bottom = 162.801
+custom_fonts/font = ExtResource( 3 )
+text = "Omne Obscurus"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="Label" parent="."]
+margin_left = 193.412
+margin_top = 231.879
+margin_right = 1093.41
+margin_bottom = 412.879
+custom_fonts/font = SubResource( 1 )
+text = "The culmination of the various investigations of Scarlet Valaire, detective specialist in Her Majesty's Secret Investigative Bureau."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="start_game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="exit_game" to="." method="_on_exit_game_pressed"]

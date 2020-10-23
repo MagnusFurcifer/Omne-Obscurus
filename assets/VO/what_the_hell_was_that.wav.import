@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/what_the_hell_was_that.wav-cdad8a22c2c3834147031bdf53c9b60e.sample"
+
+[deps]
+
+source_file="res://assets/VO/what_the_hell_was_that.wav"
+dest_files=[ "res://.import/what_the_hell_was_that.wav-cdad8a22c2c3834147031bdf53c9b60e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ohgod_blood.wav-b59114ee966a2c9f1e5a4ba87e19b2ef.sample"
+
+[deps]
+
+source_file="res://assets/VO/ohgod_blood.wav"
+dest_files=[ "res://.import/ohgod_blood.wav-b59114ee966a2c9f1e5a4ba87e19b2ef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

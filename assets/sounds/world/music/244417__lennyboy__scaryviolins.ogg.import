@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/244417__lennyboy__scaryviolins.ogg-00017e5c9ea935dc5ed9a0e492fa7647.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/world/music/244417__lennyboy__scaryviolins.ogg"
+dest_files=[ "res://.import/244417__lennyboy__scaryviolins.ogg-00017e5c9ea935dc5ed9a0e492fa7647.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
